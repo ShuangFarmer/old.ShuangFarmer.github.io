@@ -1,253 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>纹身 | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="从你来的城市，烙下的纹身，要在下一座城市显形。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="纹身">
-<meta property="og:url" content="http://shuangfarmer.github.io/2018/02/08/2018-02-08-Tattoo/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="从你来的城市，烙下的纹身，要在下一座城市显形。">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-02-08T10:27:00.000Z">
-<meta property="article:modified_time" content="2018-02-10T10:38:22.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2018-02-08-Tattoo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2018/02/08/2018-02-08-Tattoo/" class="article-date">
-  <time class="dt-published" datetime="2018-02-08T10:27:00.000Z" itemprop="datePublished">2018-02-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      纹身
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>离开一座城。</p>
-<p>站在城外，看城市的名字，高高架起的几个塑料大字，深红的，沾了灰泥，拐个弯便从视线里消失。不再回望了。你的后背离城门越来越远，音节从喉头滚动到唇边，却发不出城市的名。</p>
-<p>下一座城，下下一座城，下下下一座城。你在遗忘之间游走。而城市，千城一面的城，在遗忘的空隙里，漏下参差。干爽猛烈的春风刮乱了头发，挠得脸上疼又痒，你想起上一座城市潮湿的风和饱满丰沛的雨水，想起深夜里雨水滴落屋檐齐整的节奏。疾走在四平八稳的马路，路望不到头，风景一成不变，你想骑着车在仅容一人的窄巷里，左突右拐，恣意迷路，惊扰一只猫。会议室里，言辞激烈，谁的话都无比正确，你走了神，回到花园旁那间只亮着一盏灯的陋室，临窗对谈，茶叶放多了，舌根的苦涩中止了睡意。</p>
-<p>城市为居民打上纹身。纹身在下一座城市显形。</p>
-<p>在城市，你看到越来越多似曾相识的容颜。那个圆脸盘，铜色皮肤的中年女人，玻璃镜片背后笑语盈盈的一双眼，靠近你。你后退一步，只觉温柔眼波，化成凌厉刀锋。你想起另一张脸，抑或根本是同一张脸，混合着北方的阔大粗粝，南方的锱铢必较。你厌恶这张脸，逃离这张脸。又感到抱歉，为那个初次见面的圆脸女人。</p>
-<p>流动的人群，把城市打散，再涌入下一座城。城市不知道自己拥有什么，直到离开的人在另一座城里，识别出它遗失的信号：带一点水汽氤氲的软糯语调；一件说不出样式，叫不上颜色的衣衫；赤着的脚；以某种比例混合水、阳光、盐分、细菌，腌制的小菜。城市的画像，在离开城市的人的眼睛里、身上渐渐浮现的纹身里，一点一点勾勒、补全。</p>
-<p>纹身，是木刻的年轮，荣耀的徽章，也是冰冷的伤痕。有人欣然接纳，也有人戴上墨镜，拒绝看见，隐藏起自己来自的那座城。换下不入流的衣衫，扳直了舌头，用一种陌生的腔调描绘一幅自我的画像。眼前这座城，崭新的，没有丝毫和上一座城相似的地方，人也如获新生。只有在被激怒的时候，面红耳赤，你卷起了舌头，用昔日的语言骂上一百次才够解恨。慈眉善目的人，露出锋利的牙，身后展开黑色羽毛的翅膀，你这次不想躲闪，挥起拳头。看到手臂上的纹身，你突然明白为什么这一次你不会躲闪。</p>
-<p>遇见一位柔弱可爱的人，手掌不由自主的温柔了起来，轻轻摩挲着对方的肩。开始回想，是什么时候学会了温柔的抚摸。记忆断了片，身体却还记得，穿过城墙，跨越城门，飞往那座遗忘的城。你想起那只曾经形影不离，温柔又温暖的手。</p>
-<p>城市啊城市，不知是离开一座城，还是走进一座城。甚至怀疑，是不是一直在同一座城里迷路，往返打转。你看着手臂上的纹身，这样想着。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2018/02/08/2018-02-08-Tattoo/" data-id="cko2di0mw002m4d8z5zb8aqjm" data-title="纹身" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/02/25/2018-02-25-ValarMorghulis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Valar Morghulis
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/01/21/2018-01-21-NannyFang/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">方婆婆的冬天</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug

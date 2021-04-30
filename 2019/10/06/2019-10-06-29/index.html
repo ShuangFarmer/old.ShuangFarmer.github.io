@@ -1,267 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>29 | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="29岁的絮絮叨叨">
-<meta property="og:type" content="article">
-<meta property="og:title" content="29">
-<meta property="og:url" content="http://shuangfarmer.github.io/2019/10/06/2019-10-06-29/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="29岁的絮絮叨叨">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-10-06T06:19:00.000Z">
-<meta property="article:modified_time" content="2019-10-06T06:57:02.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2019-10-06-29" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/10/06/2019-10-06-29/" class="article-date">
-  <time class="dt-published" datetime="2019-10-06T06:19:00.000Z" itemprop="datePublished">2019-10-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      29
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>二字打头的最后一年，也跟时间约好似的掉进反思期。乱跑的 10 年，回忆零零碎碎，分散各处。卡夫卡写萨姆沙一觉醒来发现自己变成一只甲虫，这种忽然而来的惊惶与荒诞也砸中过我。10 年间，有 3 个时刻，很清晰地发觉自己不会说话了。提起笔，心绪堵在笔尖，却遗失了对应的语言，留下一张长久凝视的白纸。</p>
-<p>第一次是在高三。语文摸底考试，作文还差一半字数，实在不知如何下笔。口号式古板而空洞的句子，恣意爬满考卷上的方格子。那样的文章，竟被语文老师当了范文在全班朗读。我羞愧难当，全程埋着头，涨红了脸。始终没有学会套用高考作文模板，极度抗拒，却没有找到其他写作的法子，便作成不伦不类、自己都厌弃的东西。高三后期，连这样的文章也作不出了。一轮轮大考小考，频繁公布名次涨落，不允许有情绪，更来不及做梦，双腿沉重，双眼迟滞。高考结束那天，走出考场，有人欢呼，有人扔掉书本和试卷，我只感到茫然，脑中空空如也。</p>
-<p>好像有什么东西已经走到尽头，也像被牵引着， 10 年间，有个主题循环往复、贯穿始终，我想找回自己的语言。</p>
-<p>长期囚于陋室的人，在解开绳索的刹那，是茫然的。习惯了黑暗的双眼，需要重新适应光亮。紧缩的肌肉，需要学习舒张。忍受混沌，长时期的混沌，左试右探。与性格迥异的室友朝夕相处，和朋友一圈一圈轧马路，乱翻书，盲目又热忱地蹭讲座，终于有时间追星……弥散无序的点，像深海中的鱼群，一口一口瓦解沉没的巨轮。不同的活着的样貌，生活的可能性，胡乱的试探，慢慢筛选沉淀下相对长久的偏好。会有想要写点什么的时刻，下笔艰难，常找不到合适的语汇，努力记下只言片语。</p>
-<p>直到今年，才觉得完全从高中的阴影中解脱，用第三人称视角写了一篇小故事。第一次完全从俯瞰的角度，回看那段经历，叫「小雨」的女孩，夜晚的书桌和月光，像玻璃罩里的泥塑，微小精致，栩栩如生。解不出题目的烦恼，枯燥又单纯；难以感同身受也帮不上什么忙的父母，其实很无助；巨大的月亮忽然降临，让压得再紧的时间也漏下空隙，可以发会儿梦。写着写着忽然意识到自己俯瞰的目光，充满仁爱，好像隔空抱住了日夜独自苦战的女孩，那个女孩也在月光里得到抚慰。</p>
-<p>—</p>
-<p>高中压抑的心理状态和天生的利他倾向，好像很命定的，填志愿时清一色选了心理学专业。只是…完全照搬西方学院派以科研为主导的培养路径，与原初设想中的「心理」相去甚远。脆弱的语言系统再次受到侵蚀，更艰难了，不仅不会说，甚而也不敢说了。综述，言必有依据，必有引用和出处。字句还未落到纸上，便开始惶恐：正确吗？有理论依据吗？有实证证据吗？原创吗？逻辑合理吗？符合 APA 格式吗？一时间竟寸步难行。每个句子都战战兢兢，历经多次自我审查，自觉先天不足。专业行话，特定的术语、句式，像一门外语，像为了进入组织而必须付出的代价，像一心学习魔法的哈尔向女巫交出了自己的心脏。愈发不会说话了。</p>
-<p>完整占据了 7 年时间的专业，也是一场漫长的探寻与祛魅。跟随一位老师读研，老师是蒸蒸日上的业界小牛，在社会认知神经科学领域发表了多篇文章，研究经费充足。一切看上去都很好，但刚进实验室便觉得不对劲，按捺着的微小疑惑日渐扩大，变得沉重。割裂，始于老师暗示我为了漂亮的研究结果「扬弃」原始数据，止于一场组会的闹剧。</p>
-<p>很怕麻烦，许多同学大一大二就备战出国，自己完全无动于衷。实验室的经历，是一出激将，第一次萌发了看看外国实验室是怎么做研究的想法。在考英语和准备文书的空档，跟随另一位老师做了一个小研究。姑且叫他老乐吧，老乐不拉经费，不发文章，临退休也没评上教授，在种种方面都跟那位上进的前导师截然不同。老乐把我从一种僵化的思维禁锢中解救了出来，老头子总笑眯眯地说，少读文献，多出去玩儿吧，多观察，涉猎人类的各种知识，别困在自己的专业里面。我们的研究项目，从生活问题出发，再一步步剪枝为可研究的课题。时间仓促，稀里糊涂被老乐牵着走，做着做着忽然尝到了点做研究的滋味。文献不再是让人束手束脚的镣铐，而是围拢在身边，为我所用，支持一些、拒绝一些、批评一些，最后自圆其说。</p>
-<p>好奇、观察、试验、反思，研究的精神也发轫于此。那是不拘束在实验室里，也可以秉持的生活态度。不汲汲于职称，不计较期刊影响因子的浮沉，我看到老乐身上走出象牙塔、自由思考的畅快与乐趣。感到逼仄时，想想还有老乐那般的存在，也可以舒口气。</p>
-<p>—<br>最心酸的一年，在北京，又一次失去了话语。</p>
-<p>精神力疲软而摇摆的时候，特别容易丧失话语。现在说这话可能有点老派吧，总希望敲出来的字，是内心相信的。心力摇摆时，语句也支离破碎，难以成篇。</p>
-<p>太多激烈冲撞的一年了，很长时间找不到自己的位置。都说创业维艰，时至今日，不想仅仅用维艰二字掩饰公司在管理和经营上的不足。只有经历而没有沉淀下多少经验的一年，在一个公司并不想花钱投入的小组，自动地补足其他成员力有不及的部分。为了让擅长策划的同事可以心无挂碍地构思玩法，揽下了统筹对接沟通执行的种种活儿；为了让另一位既不擅长策划也不愿意踏实执行的同事的项目可以进行下去，便又熬夜调研产品和玩法，找出可以借鉴之处。</p>
-<p>能力不足，却倾尽所有。随着项目的进展，需要承担的责任也越来越多样和繁重，不知道要把自己分成几份才够用。太多的事情，都像往深深的井里，投一颗又轻又小的石子，没有任何回音。大概不太懂得怎么表现得聪明，也不太知道怎么做足优雅的姿态，老板营造的威权，那种不容置疑，让人怀疑自己的判断和声音。周围那么多聪明人的应和与拥簇，也让人心里嘀咕是自己有问题吗？很难沟通，很难表达，很难验证。变得消沉，变得无助，执念顿生，觉得自己是一个没有价值的人。</p>
-<p>不得不离开了。再不离开就要生病了，其实已经生病了。</p>
-<p>偶尔还是会回想当时，像一个缺了口的圆环，想把它补完整。现在的自己知道更好的应对方法，工作中的和心理上的。但更好的应对，也只是让自己和合作的小伙伴思路更清楚，心里更舒坦罢了。那些我们难以撼动的局限，才是左右事物走向的核心。眼看他楼高起，眼看他宴宾客，眼看他楼塌了，原来就是这样的感觉啊。于是，也释然了，和深夜在五道口留下的眼泪一起释然。</p>
-<p>—<br>读过一个智力理论，人的智力划分成若干模块，每种模块对应一种智能，像巨型魔方。在实证主义当道的学科风尚里，这个理论缺乏实验数据支持，缩在教材的边角积灰。现在想来，不妨把它看作一个思想实验，对精神状态的模拟。现在的自己，愈发像这样生活着。打散切碎成块，依据不同的场合取用、拼装，展现一个「适应」的样貌。适应的，也是割裂的。</p>
-<p>看着同学、朋友的近况，常有一脚踏入平行宇宙之感。如果当初没有放弃保研，也许会和室友一样研三去外企实习、顺利留用，在上海外郊买一套二手房，结婚。如果没有回国，也许会和研究生同学一样，一路念到博士、博士后，发几篇中规中矩的 paper，艰难谋求教职。如果没有离开北京，也许会和许多前同事一样，跳槽到别的公司，干着旁的什么工作。</p>
-<p>似乎总在分岔、转弯，没有环环相扣的紧致感。在离开上一环而尚未扣住下一环的空荡里，拥有了一些自己的时间，不是作为谁的女儿，不是作为谁的学生，不是作为谁的员工，只是作为自己而存在的时间，感受没有羁绊的自在，也与挥之不去的孤独与恐惧日夜相处。</p>
-<p>那是对我很珍贵的时间。这些时间，得以在书写中封存起来。挪了很多次窝，QQ空间、新浪、人人、豆瓣，再到这个博客，几次遗失话语，却从未放弃想要写点什么的念头。割裂的自己，似乎也在书写中保持了某种延续。精神力也总在虚弱的摇晃过后，变得更加坚实。</p>
-<p>高中时在新浪博客里写「我想成为站在你们背后的人」。天生的利他心和共情能力，总把自己放到一个 helper 或者 supporter 的角色。习惯于为了团队的成就，不得不背负一些什么。那样的位置，很擅长，可以做得不赖。现在却希望，比起「不得不」的责任感和勉强，下一个十年主动推动一些改变，去成就一些什么吧。</p>
-<p>十年间，在心理学的视角里沉浸了太久太久太久，下一个十年多放眼看看别的学科与行业吧。对「心理健康」的理解，也有了一些转变。抑郁让人冷静分析当下的处境，压力能急速调动身心资源应对紧急状况，痛觉让人尽早探知风险及时规避。并不渴望成为一个非常快乐的人，在这样一个时代，保持一些撕扯的不适，保留一点抑郁，保持警醒，或许是更加适应的应对。</p>
-<p>絮絮叨叨了一大篇，也祝自己 29 岁生日快乐~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2019/10/06/2019-10-06-29/" data-id="cko2di0nk004a4d8zax9pabud" data-title="29" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/12/23/2019-12-23-Recently/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Recently
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/09/13/2019-09-13-TheLine/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">排队</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug

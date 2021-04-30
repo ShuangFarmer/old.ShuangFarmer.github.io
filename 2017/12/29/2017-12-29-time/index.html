@@ -1,257 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>时间碎片 | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="time line，time slot &amp; time zone">
-<meta property="og:type" content="article">
-<meta property="og:title" content="时间碎片">
-<meta property="og:url" content="http://shuangfarmer.github.io/2017/12/29/2017-12-29-time/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="time line，time slot &amp; time zone">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-12-29T03:58:00.000Z">
-<meta property="article:modified_time" content="2017-12-30T02:45:18.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2017-12-29-time" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/12/29/2017-12-29-time/" class="article-date">
-  <time class="dt-published" datetime="2017-12-29T03:58:00.000Z" itemprop="datePublished">2017-12-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      时间碎片
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Time-line"><a href="#Time-line" class="headerlink" title="Time line"></a>Time line</h3><p>语法书里，箭头向右的长线代表时间，中间一颗参照点。一刀斩过去，过去在左，将来在右，过去与将来泾渭分明。比喻贴切通俗，正如过去若干年间听闻的模型一般，散发抽象凝练的美感。当潜入真实的语境，现在回望过去，过去畅想未来，未来成为过去，时态、语态交错盘曲成迷宫，不分左右东西。</p>
-<p>「过去」栖身在与「现在」背道而驰的方位。面对过去，惯常的姿态是回顾，似乎总要转过身，回了头，过去才会显形。不是这样的。那些称为过去的，发出光亮，拂过后背、头顶，在身前投一地影子。人与影子同行。时间和空间催化，影子的轮廓比「过去」本身更清晰、丰富。</p>
-<h3 id="Time-slot"><a href="#Time-slot" class="headerlink" title="Time slot"></a>Time slot</h3><p>slot，意为细长的缝隙。刻在存钱罐顶，落成狭长的投币口；开在 ATM 一侧，平躺成扁扁的插卡槽；跳入横竖交错的时间表，slot 是长方形的小条儿：9：00 - 9：30，紫色的晨会，14：30 - 15：30 蓝色的调研和访谈，10：30 - 11：00 ，热气腾腾的棕色咖啡杯招呼着 coffee break。</p>
-<p>slot，拼写简单，发音规整，却像衬衣最末端那颗小纽扣，稍不留神便无法紧紧扣在大脑皮层的沟回里。有的单词简单又具体，像 stool，能很快把具体的图像跟他匹配起来，一来二去便熟悉了；有的单词，长，音节多，却含义清晰，带文学意味，让人愿意记住它，比如 reticence ；又或者像 hypothalamus ，教材和文献里碰得多了，想不记住都难。唯独 slot 这样的词，寻常、微不足道，就像他的含义 —— 细小的缝隙、凹槽，隐藏在更宏大喧嚣的背景里，无声地描摹时间。</p>
-<p>留学时预约面谈，教授在邮件里列出一串时间空档，半小时或一小时为期，放在日程表里，细细的一小条。我才注意到它，time slot，承诺给彼此的时间，像一个密闭的空间，很遥远的，只在文献里见过的名字 ，就坐在对面。教授从不挑剔你的磕巴和口音，只在乎你的想法。讨论研究的时候，可以较真、质疑、直接说 I disagree。恍惚觉得自己也是他们中的一员，是 colleague，是 researcher。</p>
-<p>在 time slot 里待一段时间，伸手一摸，触到它的四壁。办公室里争锋相对的讨论，转过身，在走廊里偶遇，连打个招呼都尴尬羞涩。开组会时坦诚而热烈，中途休息的 15 分钟，同事用荷兰语开玩笑。陌生的语言，施了隐形魔障，手中没有令牌，一言不发晾在一旁。哪怕用英语言说的时刻，似乎也永远 get 不到笑点。时间、空间、社会关系，封装在彼此承诺，彼此交付的 slot 里。碰壁的手指末梢，微凉。</p>
-<p>论文是堆砌的 time slot，沙漏的形状，两头宽，中间窄。大背景、重要的研究主题，收窄收窄，窄到飞燕瘦瘦的腰肢一般的假设当中去。一丝不苟的研究设计，诚实严谨的结果分析，至论文讨论板块，再次阔大、衍生，关联更广泛的研究和更宏大的议题。论文，是打入学术圈的令牌，时间修剪堆积成沙漏的形状，唯一的形状。要进入这个圈子，便要遵守对时间的承诺，来不得半点小聪明，小性子。</p>
-<p>在进得去与进不去，交付承诺与舍弃承诺的那些 slot 里，亲近了一些时间，又疏远了一些。</p>
-<h3 id="Time-zone"><a href="#Time-zone" class="headerlink" title="Time zone"></a>Time zone</h3><p>横为纬，隔断北半球的夏天和南半球的冬天。纵为经，划开东八区的 8：30 与西五区的 19：30。空间切割了时间。</p>
-<p>樱花烂漫的西雅图，你喝一口咖啡，给朋友写明信片，我在困倦的春日午后，向你道一声「晚安」。十二月的澳洲海湾，阳光猛烈，咸咸海风，你备好了圣诞晚餐，我站在日渐稀疏的银杏树下，望着满地落叶的金黄，发呆。北方小城里下了多年难遇的大雪，你偎着暖气，吸着鼻涕，我在 skype 那端，透过你身后的窗户，瞥一眼屋顶的雪白。</p>
-<p>即时通信，填补了时间的错位。异步的时间节律，却始终难以感同身受。细节丰满的想象，柔软深邃的同理心，填不满神经细胞全开的具身感受。</p>
-<p>还有一些束手无策的时间的断裂。当生命之钟停摆，一个人再无力维系自己，他的时间与空间散落在基因与模因里。似曾相识的体征与行为方式：自然卷，急匆匆的步态，遗传的病变，雕刻曾经的存在。无法预知的某个时刻，细碎的回忆、言语的片段，轻轻一点，后知后觉地鲜亮起来。他短暂活转回来，以一种他无从知晓的方式，又再次寂灭。</p>
-<p>当一个人选择主动离开，一段关系便断裂了。此时此地，切割成两个 time zone，互斥的时间节律，比死亡更加遥远。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2017/12/29/2017-12-29-time/" data-id="cko2di0mu002e4d8z3i6x5qod" data-title="时间碎片" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/12/31/2017-12-31-bye2017/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          并非如是
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/12/12/2017-12-12-book/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">书の乱想</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug

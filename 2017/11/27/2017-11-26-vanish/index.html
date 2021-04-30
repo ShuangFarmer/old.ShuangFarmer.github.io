@@ -1,282 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Vanish | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="vanish：动词。 神秘而突然的消失，不留任何蛛丝马迹。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vanish">
-<meta property="og:url" content="http://shuangfarmer.github.io/2017/11/27/2017-11-26-vanish/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="vanish：动词。 神秘而突然的消失，不留任何蛛丝马迹。">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-11-27T10:24:00.000Z">
-<meta property="article:modified_time" content="2017-11-27T10:40:40.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2017-11-26-vanish" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/11/27/2017-11-26-vanish/" class="article-date">
-  <time class="dt-published" datetime="2017-11-27T10:24:00.000Z" itemprop="datePublished">2017-11-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Vanish
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>童年生活的地方，有一条坑坑洼洼的马路，路两旁种满了法国梧桐。树是几十年前种下的。据说宋美龄最爱法国梧桐，城市便沾了夫人的光。盛夏，梧桐树葱葱茏茏，碧绿的枝干环抱成拱。晴时细碎的阳光从叶子的孔隙里漏下斑点，雨时茂密的树叶便作一把大伞，我常冒了雨，从树底穿梭回家。</p>
-<p>树比人长。我还没出生的时候，我父母还没出生的时候，这些树便在了。也理所应当以为，这些树会一直在的。</p>
-<p>五月的一天，阳光明亮，我放学出来。马路亮得发白，天空开阔，路边的小店仿佛一夜之间矮了一头。我不敢相信自己的眼睛，一路跑回家，一边跑一边张望，「树呢？树去哪儿了？」。路的尽头停着卡车，两棵树平躺着，粗壮而盘曲的根朝向我。一群穿制服的人，拿铲，清扫路上的泥。路两边，紧紧挨着的方格子里，一个又一个窟窿空洞地仰头。格子四周绿叶散落。</p>
-<p>爸爸说车是一大早开来的，法国梧桐一棵棵连根拔起。我问爸爸，树会被运到哪里去。爸爸说，会到郊区的某个植物园里面。我问爸爸，这些树挪了窝，还能活吗。爸爸说，这就不好说了。是吧，树挪死，人挪活。</p>
-<p>我哭了。那个时候，没有智能手机，没有数码相机，便拿出水粉颜料，在纸上画了一棵树，弯弯曲曲的根，粗粗的树干，蓬勃的树冠。</p>
-<p>后面的故事，我们都听得太多。店铺一家家搬走，再拆掉。坑坑洼洼的马路，铺上沥青，从仅容一车通行，拓宽至两车道，再摇身一变，成了四车道。居民楼、贴满了玻璃窗户的购物中心雨后春笋般冒起来。稍有想法的年轻人，都离开了家乡。</p>
-<p>只是…不再会为突然消失的事物流泪了。</p>
-<p>–</p>
-<p>到北京的第一天，找了家短租。近北四环的小区，房主精打细算，十几平的卧室，塞进去两张上下铺的木床，住进 4 个人刚好。有一张公用的桌子，但没人真的会坐在桌前干些什么。白天，室友一个接一个飞出去，晚上，大家再一个接一个回来睡上一觉。</p>
-<p>小区后门有条小街。卖粥的、卖饼的、卖水果的，川菜、韩国料理、新疆烤肉，各占一间小小的店面，伸长了手臂，招揽来往的行人。也许店里的灯光比别家的明亮，店里的顾客也更热闹，鬼使神差，我走进一家川菜馆。招呼我的小个子女人，嗓子微微有些哑了，却掩不住热情：「几位？1位。里边请里边请」。翘着舌的椒盐味四川普通话，一边说着，把我往空座领，摆碗，倒茶，递菜单，一气呵成。他们家的米线很好吃。</p>
-<p>我很快找到了长租的住处。两边隔得不远，下了班或是周末，还是喜欢往这边来。尤其周末，平日工作的那片繁忙街区，像死掉了一样。没有人，咖啡店、超市、打印店，要么很晚才开，点着不亮的灯，要么索性关门。加班出来，一刻也不想在这片区域待着，常去光顾这家川菜馆。每次都能见到那位小个子女人，大概是领班吧，人前人后张罗着。店面虽小，却一寸也没有浪费，餐桌摆了三列，留出两条窄小的过道。她瘦小的身子，在过道间轻盈穿梭，上菜，收钱，应着催菜的客人，招呼刚来打工的小姑娘小伙子收拾桌子。一次，正是饭点儿，没空桌了。她快速锁定一个卡座，人还没走到，笑脸已经堆上去了：「这个位子没人吧？能让这位姑娘坐这吗？没其他位子了」。我坐在卡座上，滋遛滋遛吸着米线，客人进进出出，她前前后后忙。一家小店，能有这样一个人，就盘活了吧。</p>
-<p>出了川菜馆直走右转，又是一条小街，街中段小区入口旁有家极不起眼的裁缝店。店主四十多岁，方脸，瘦，非常瘦。说话却运足了气势，凌厉，咄咄逼人。店主在这行干了二十多年，干洗、缝补、改尺寸，你能想到的，她都有手艺。大衣的拉链跟底下的布料之间脱开了，拉不上，跑去找她。她用细细的手指，掂着缝拉链的针角，想了一会说：「没问题。给你换条拉链就行了。」过几天去取大衣的时候，她给换了条颜色、材料都跟原配非常接近的拉链，细密的针线，让人看不出缝补的痕迹。我连连赞叹，心想店主的「咄咄逼人」是有底气的，那是有一技傍身的自信。很喜欢看她干活的样子，取衣服，叠衣服，写标签，拿了玻璃纸包衣服。如果带上一副特制的耳机，会听见她的每一个动作都踩在了节奏点上，流畅、自然。</p>
-<p>今年四、五月，再到这家裁缝店来。刚拐进小街，便觉得不对劲。路两边搭着基建维修时常用的那种蓝色带褶挡板，街上散落着砖块，水泥东一堆西一堆。裁缝店门面不见了，一堵水泥墙挡在眼前。「嗯？搬走了？」，一旁的水果店还开着，便进去看了看。原来，整顿之后，三家店面都拆掉了门面，往后退了一两米，共用一道小门。经过右手边的文具店，从水果店前面窄窄的过道穿过，裁缝店在最里面。店主还在，店主头顶上的竹竿上依然挂满了衣服。她认得我，气焰收敛了些，嘟囔着说：「他们把前面的地收走了，不让开门面，太影响生意」。</p>
-<p>我没有说什么，出了裁缝店，又去到那家川菜馆。川菜馆和川菜馆旁边的小馆子，也遭遇了类似的命运。「违规搭建」的部分都被拆掉了，用砖砌了墙，马马虎虎涂了水泥，灰扑扑的。店都开着。</p>
-<p>今年九月再去，不知什么时候，川菜馆已经搬走了，只剩一堵墙。</p>
-<p>–</p>
-<p>昨天负责我家片区的京东快递员在四处寻租。</p>
-<p>快递员流动性大，常换新面孔，一年多来，他一直没换，我便认得他。也许因为我帮久呼不应的室友代接了几次京东快递，让他能如期完成配送指标，一解燃眉之急。见到我，他总是分外热情，用不知是河南还是河北口音道好。他总念不好「双」字，明明是平声，非要绕个弯，念成三声，滑稽的很。</p>
-<p>他看起来，并不像送快递的。三十多岁，个子极矮，极瘦小，仿佛被生活抽干的那种瘦小。不像那些不省事的小子，高高壮壮的，一张稚气未脱的脸，迟到，送错了东西，还乐颠颠的说，「没关系，钱算在我头上」。他起早贪黑，当天的单子没派完，他着急。派送早了，人不在家，他会抽时间晚上再跑一趟送过去。</p>
-<p>这样一个人，结束了一天的工作，会在晚上 11：26 分写下：</p>
-<blockquote>
-<p>忙碌了一天可以下班回家休息了，明天迎接新的一天。</p>
-</blockquote>
-<p>这样一个人，会因为偶尔 6 点多就下班，专门写下一条：</p>
-<blockquote>
-<p>今天下了个早班。</p>
-</blockquote>
-<p>看到过他朋友圈里孩子们的照片。三个女孩，脏乎乎的小脸，面无表情举着奖状，僵僵地盯着镜头。</p>
-<p>我把我知道的北京租房互助信息都转给了他。他在微信那端，先打出我的全名，再写了谢谢。老派的，像以前写信，必先有抬头称呼，再落笔正文。很郑重。</p>
-<p>我不知道该说些什么，希望他尽快找到落脚的地方。</p>
-<p>对了，他的微信昵称叫作「奋斗，志在四方」。</p>
-<p>–</p>
-<p>已经很久都没有想起童年时的树了。昨天读着新闻，那一棵棵连根拔起的法国梧桐，突然从脑子里长出来，挥之不去。</p>
-<p>树，不说话，吸进二氧化碳，吐出氧气。长成一柄大伞，遮阳挡雨。我们每天从树边走过，也许从来都不会仔细端详他们身上斑驳的树皮，新吐出的嫩叶。树，孤独地，默默生长。</p>
-<p>一夜之间，连根拔起，不是树的宿命。</p>
-<p>谁的宿命，都不该如此。</p>
-<p>这不是第一次，也不会是最后一次。</p>
-<p>覆巢之下，岂有完卵。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2017/11/27/2017-11-26-vanish/" data-id="cko2di0mt002c4d8zc76x6hdr" data-title="Vanish" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/12/12/2017-12-12-book/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          书の乱想
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/11/18/2017-11-18-neighbour/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">耳朵里的邻居</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug

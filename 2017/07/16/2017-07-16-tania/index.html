@@ -1,259 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Tania | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="如果你有幸结识一位长了翅膀的女生。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Tania">
-<meta property="og:url" content="http://shuangfarmer.github.io/2017/07/16/2017-07-16-tania/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="如果你有幸结识一位长了翅膀的女生。">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-07-16T11:43:00.000Z">
-<meta property="article:modified_time" content="2017-07-16T14:27:14.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2017-07-16-tania" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/07/16/2017-07-16-tania/" class="article-date">
-  <time class="dt-published" datetime="2017-07-16T11:43:00.000Z" itemprop="datePublished">2017-07-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Life/">Life</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Tania
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>「I’m Shuang」。「Shuang」字，我故意念得重重的。</p>
-<p>见她张张嘴，面露难色，我熟练地补充「you can call me Yoyo」。此时，几乎所有人都会舒展眉头，笑吟吟打招呼「Hi, Yoyo」。</p>
-<p>她看起来依然有点严肃：「Which one do you prefer？」</p>
-<p>「hmmm？」</p>
-<p>「I mean, Shuang or Yoyo, which one do you prefer？」</p>
-<p>我愣住了。「Shuang」还是 「Yoyo」，原来我可以选择。</p>
-<p>她叫 Tania。人群中一眼望过去，总有那么几个人会一下子跳入眼帘，Tania 便是。也许因为肤色？我们村儿，地处荷兰中部，籍籍无名，不如阿姆斯特丹这样的国际大都市种族多样。Tania 乌黑头发包裹着的深褐色皮肤，在一堆白皮肤黄头发的欧洲人中间，扎眼。这样说，好像有失妥当，毕竟村儿里亚洲人也少。这份「稀少」，没有把我们推往人前，而是无名地挤到边缘。</p>
-<p>那么，是因为别的什么吧？小巧的鼻环跨在鼻尖，轻轻晃动，阳光照下来，泛起点点银光；凌乱蓬松的齐耳短发，捋一捋，又换了种方式蓬松凌乱着；后脑勺摇曳一根细长细长的小辫子。又或者她衣服的配色，桃红、亮绿、深紫，换了别人，一身俗艳，放在她身上，却觉得：嘿，真美，有生命力的那种。喜欢看她做饭的样子。不知道多古旧的诺基亚手机播着拉丁舞曲，她信手拿来几颗灯笼椒，对剖、去籽、切块。一手切，一手捻一块放到嘴边，嚼了嚼，嘟囔着「嗯，这灯笼椒味道不错」。我愣在一旁，她手中的刀，连同红的黄的灯笼椒，化成彩色的绸带。她轻扭腰肢，轻舒双臂，旋转、挥舞。禁不住说「Tania，你做饭的样子真像跳舞啊好好看~」。Tania 总会有些无奈不解地望着我：「Oh，Shuang，你怎么又这样讲？」</p>
-<p>有些事，很难跟 Tania 解释清楚。周遭的人，包括我自己，或多或少都困在一扇门里。门或许已经撤走了，却再也不敢纵身一跃。甚至，那道门可能从未存在过，只是身边的人，你一言我一语，说得多了，门也就逼真地把人挡在世界之外。而 Tania 一直站在门外，站在笼子外面，腾挪舞步，真真切切，没有什么能关住她。</p>
-<p>刚到村里那阵，Tania 邀请我到她家作客。她住得远，要走到市中心，穿过桥洞，一路行至远郊。我骑着车，迷了路，天越来越黑，雨越下越大。没穿雨衣，没带雨伞，我在一条又一条小路间乱撞。每一条路都挂着两排纸片样的小房子，每一条路都似曾相识。时间一分一秒过去，迟到 5分钟、10 分钟、20分钟……一个人走在雨里，哇哇大哭。当我终于站在她家门前，湿答答敲门，「咚咚咚」，脚踏楼梯的声音愈发急促。Tania 俯身开门，一把抱住我，哈哈大笑：「Shuang，你走到哪里去啦，竟然迟到那么久。快进来，快进来」。不知为何，记忆里，她张开了一双翅膀，搂着我，轻盈飞起，把我安放在她温暖的小屋。得知我迷路，Tania 一张严肃脸，问：「Shuang，你迷路了，为什么不打电话来问我？」。是啊，为什么不打电话，为什么不主动求助？这声质问，至今仍在心底回响。</p>
-<p>Tania 常搬家，有段时间每隔 2、3 个月，她就会给我一个新地址，我再迷一回路，外加蹭吃蹭喝。后来，厌倦了频繁搬迁，她在河对岸一个乌托邦式的实验社区长住下来。社区是几栋由木板和秸秆搭成的小房子，前面有菜园，可种些花草瓜果。社区成员每天轮流分享食物，一起劳作，像一个大家庭。这听起来，很 Tania。</p>
-<p>还有好多很 Tania 的事情。比如，你总是找不着她。在 fb 上留言问最近在干嘛。她回：「我在一个为期 2 周的纪录片制作 workshop」、「我在柏林做自闭症儿童的公益项目」、「我去了一年一度的摇滚音乐节，超酷的」、「我病了，回了父母家」……有时，她突然出现：「有空吗，中午聊聊？」。难得的晴天，我们拿了面包，走到学校附近的草坪，找棵大树，躺下来。望天，望着巨大的树冠；说话，或是不说话。最离奇的一次，某个阴雨霏霏的清晨，我骑车去学校。一辆摩托车疾驰而过，隐约听到车上的女人嘶喊了一声「Shuang~~~」。还没看清那人的脸，车已经开远了。当时就想，那女人该不会是 Tania 吧？一两个月后，聊起这茬，还真是她。嘿，除了她还能有谁？</p>
-<p>只有在一起做统计课大作业的时候，我才会意识到，咱俩是同班同学。在 Tania 家，她点了几只红烛，温着精油。翻开厚厚一大本 statistics in R，烛影摇曳；导入数据敲几行 R 代码，香气微醺。我打赌，48 小时后，我们会忘记方差分析前应该检验哪些样本分布的假设。一周后，我们会忘记怎么用 ggplot2 画条形统计图。其实，不需太久，我们就会发现大作业也没什么所谓。午夜 12 点，大作业搞定。睡眼惺忪中看见 Tania 化妆、换装，午夜的舞会刚刚开始，而我要回家了。嘿，Tania，长了一双翅膀的 Tania，哪里才是你要停留的地方？</p>
-<p>这周 Tania 终于毕业了。问起下一站，她说：「你猜？」。我摇摇头：「我哪里猜得到」。她眼里闪过狡黠的神色：「我要去非洲卢旺达待 4 个月！」。非洲卢旺达，我打开地图，点进非洲大陆，放大了又放大，找到这个位于非洲中部的国家。有湖泊、有山脉、有石头房子、有现代都市，不知道她会去到哪边，会做些什么。 也无妨，长了一双翅膀的女子，大概是属于风的。</p>
-<p>只是……不知何年何月，我们才能在地球的某个角落再度相见。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2017/07/16/2017-07-16-tania/" data-id="cko2di0mo001w4d8z5vv1h2uu" data-title="Tania" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/07/30/2017-07-29-postman/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          邮差
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/06/04/2017-06-04-yuanyuan/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">缘缘这人</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug

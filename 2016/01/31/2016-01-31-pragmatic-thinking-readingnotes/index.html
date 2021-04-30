@@ -1,315 +1,54 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>实用方法: 读《程炼》 | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="《程序员的思维修炼》英文版书名为《pragmatic thinking and learning》。pragmatic，指实用、实务、有效处理当前情境中的问题，是全书书眼。书中抛出实用锦囊若干，帮助读者更加有效地学习、思考、处理问题。   1 能力定位：德雷福斯模型身在山中，容易自满自足，不知山外有山。若望高山，而不知山，则只有望山兴叹，缩回自己的小山头。德雷福斯模型展开了一幅能力进阶的群山图，新">
-<meta property="og:type" content="article">
-<meta property="og:title" content="实用方法: 读《程炼》">
-<meta property="og:url" content="http://shuangfarmer.github.io/2016/01/31/2016-01-31-pragmatic-thinking-readingnotes/index.html">
-<meta property="og:site_name" content="一亩田">
-<meta property="og:description" content="《程序员的思维修炼》英文版书名为《pragmatic thinking and learning》。pragmatic，指实用、实务、有效处理当前情境中的问题，是全书书眼。书中抛出实用锦囊若干，帮助读者更加有效地学习、思考、处理问题。   1 能力定位：德雷福斯模型身在山中，容易自满自足，不知山外有山。若望高山，而不知山，则只有望山兴叹，缩回自己的小山头。德雷福斯模型展开了一幅能力进阶的群山图，新">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2016-01-31T03:52:00.000Z">
-<meta property="article:modified_time" content="2016-07-19T15:05:20.000Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+extends base
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+block title
+  title= page.title + ' | ' + config.title
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format(config.date_format)
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus.enable == true
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true && page.donate != false
+      include _widget/donate.pug
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
+    if theme.post_copyright.enable == true && page.copyright != false
+      include _widget/copyright.pug
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">一亩田</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-      <div class="outer">
-        <section id="main"><article id="post-2016-01-31-pragmatic-thinking-readingnotes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2016/01/31/2016-01-31-pragmatic-thinking-readingnotes/" class="article-date">
-  <time class="dt-published" datetime="2016-01-31T03:52:00.000Z" itemprop="datePublished">2016-01-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Book/">Book</a>
-  </div>
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      实用方法: 读《程炼》
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>《程序员的思维修炼》英文版书名为《pragmatic thinking and learning》。pragmatic，指实用、实务、有效处理当前情境中的问题，是全书书眼。书中抛出实用锦囊若干，帮助读者更加有效地学习、思考、处理问题。  </p>
-<h2 id="1-能力定位：德雷福斯模型"><a href="#1-能力定位：德雷福斯模型" class="headerlink" title="1 能力定位：德雷福斯模型"></a>1 能力定位：德雷福斯模型</h2><p>身在山中，容易自满自足，不知山外有山。若望高山，而不知山，则只有望山兴叹，缩回自己的小山头。德雷福斯模型展开了一幅能力进阶的群山图，新手、高级新手、胜任者、精通者、专家，盘踞一处。这幅图，可鸟瞰，与群山比拼，知晓高低。这幅图，可细察，拨开迷雾，把高山看个清楚。    </p>
-<p>从新手到专家，隔了几座山？新手与专家眼中的<code>问题</code>截然不同。新手只看得到眼前的问题，并急于解决它。专家不仅分析问题还分析问题所在的<code>情境</code>；能把问题关联到更深入的<code>模型</code>；能主动<code>预测</code>问题。董振磊老师在分享会里介绍的芒格，就是建立跨学科模型，使用模型解决问题的专家。新手与专家解决问题的<code>方法</code>也不同。新手需要行动指南，手把手指点。专家则依赖<strong>基于大量经验</strong>的直觉解决问题。另外，专家有更强的元认知和反省能力，他们不止步于<code>解决</code>问题，他们致力于寻找<code>更好的解决办法</code>。  </p>
-<p>作者在书的开篇即介绍德雷福斯模型，用意是让读者评估自己的能力阶段，找到与高阶者的差距。然而，模型仅仅是对事物的一般抽象，会有疏漏、偏差、过时。正如作者在警惕工具陷阱一节中也提到，如果一昧依赖模型，将会忽略现实，忽略情境，过度简化事物。德雷福斯模型也不会例外。了解模型之余，不妨把目光投向自己所在领域，观察领域中的低阶者和高阶者，再分析、比较、归纳出自己领域里的能力进阶图。</p>
-<h2 id="2-善用大脑：大胆直觉，小心debug"><a href="#2-善用大脑：大胆直觉，小心debug" class="headerlink" title="2 善用大脑：大胆直觉，小心debug"></a>2 善用大脑：大胆直觉，小心debug</h2><p>大脑有两种加工模式＊：模式1，线性加工，运行速度慢，逻辑思考、语言加工都靠它。模式2，直觉、整体式加工，非语言加工，不受意志控制，问题解决、创造力需要它。一般观念里会更加倚重模式1，但是模式2同样重要，专家的直觉和创造力，来自模式2。高效的学习和思考，两种模式缺一不可。</p>
-<p>开启模式2，激发直觉：  </p>
-<ul>
-<li><p>具像化<br>将抽象的文字，转化为图像，调动多种感官，使之可看、可摸、可听、可闻。  </p>
-</li>
-<li><p>隐喻<br>找到事物之间的联系。以具象的事物隐喻抽象，便于理解抽象概念。把看似不相干的事物连接起来，需要创造力。  </p>
-</li>
-<li><p>散步<br>把模式1关掉，出去走走</p>
-</li>
-</ul>
-<p>直觉会犯错，不想被直觉带坑儿里，切换到模式1，小心debug：   </p>
-<ul>
-<li><p>认知偏差<br>了解认知谬误，并避免之；极端值里可能存在有价值的信息，别轻易扔掉；忍受不确定性，别轻易做决断  </p>
-</li>
-<li><p>个体与背景<br>了解自己、了解时代精神  </p>
-</li>
-<li><p>反向思考<br>想象自己观点的对立面</p>
-</li>
-</ul>
-<h2 id="3-实战升级：learn-by-doing"><a href="#3-实战升级：learn-by-doing" class="headerlink" title="3 实战升级：learn by doing"></a>3 实战升级：learn by doing</h2><blockquote>
-<p>通过构造来学习，而不是通过学习来构造</p>
-</blockquote>
-<p>学习是主动求索、创造，而不是像海绵一样贪婪地吸收信息。学习需要在情境中实战，持续输出，不怕犯错，根据反馈不断改进。一个高效的学习流程应该是什么样？ </p>
-<ul>
-<li><p>目标<br>参照制定目标的SMART原则：<code>specific</code>, <code>measurable</code>, <code>achievable</code>, <code>relevant</code>, <code>time-boxed</code>  </p>
-</li>
-<li><p>计划<br>继续参照SMART原则，制定短、中、长期计划   </p>
-</li>
-<li><p>执行  </p>
-<ul>
-<li><p>打造学习环境    </p>
-<ul>
-<li><p>版本管理（git + github）<br>能保存历史版本，可回溯任一历史版本，保证可大胆尝试而不怕写坏写废    </p>
-</li>
-<li><p>能提供即时准确的反馈（学习小组、师徒制的优势）  </p>
-</li>
-<li><p>减少干扰  </p>
-</li>
-</ul>
-</li>
-<li><p>专注  </p>
-</li>
-<li><p>管理知识  </p>
-<ul>
-<li><p>养成做笔记的习惯，随时记录想法   </p>
-</li>
-<li><p>建立个人wiki<br>收集案例，记录观点，建立信息间的连接<br>群友推荐使用<a target="_blank" rel="noopener" href="http://www.yangzhiping.com/tech/gollum.html">gollum</a>，有时间的话试试（参考阳志平老师的网志。另，感觉阳老师是万能的……）</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>反馈、迭代、改进</p>
-</li>
-</ul>
-<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4 小结"></a>4 小结</h2><p>这本书最让我获益的点：  </p>
-<ol>
-<li><p>德雷福斯模型<br>这个模型让我对解决问题能力的差距模模糊糊的感觉和认识，清晰了许多，实实在在看见了问题解决能力之间的差距。借助德雷福斯模型，我更加了解身边的牛人，牛在哪里，而自己跟他们的差距又在哪里。</p>
-</li>
-<li><p>模式2与直觉、创造力和专家的联系<br>我对这种双加工模式并不陌生，但从来没有把它与专家技能、问题解决和创造力关联起来。冥冥之中，知识跟知识贯穿联系的感觉很奇妙。</p>
-</li>
-<li><p>构建式学习，learn by doing<br>去年一次自学python的经历，让我意外实践了一把构建学习。当时的目标非常明确（被逼无奈），1-2个月内，编出实验程序，能够用键盘移动屏幕上的物体，能够记录正确率和反应时。在实战中学习的好处是，任务本身会创造需要解决的问题，在解决问题的过程里，掌握新知识。学习者一直处在积极学习，积极发现问题、解决问题的环路里，搭建自己的知识网。若是在平常课堂上学习知识，学习顺序是颠倒过来的，先学习知识，再通过练习巩固知识，这样的学习过程，被动太多，远没有构建式学习，苦中有乐，学得扎实。<br>读罢《程炼》，如果让我回到1年前，我会做的改进是：不要独自学习，找到学习小组，找到导师，获得更加即时的反馈（互相吐槽，舒缓下焦虑的情绪，也是极好的）。使用版本控制系统，当时搞了n个.py文档，完全分不清每个文档都做了哪些改动，还不敢删。建立个人wiki，或者以写一本编程入门手册的思路来学习，如果这样做了对概念的理解，对概念之间的联系，应该会更加明晰。</p>
-</li>
-</ol>
-<p>这本书让我比较失望的地方是结构松散，论述也有混乱，有时候找不到小节之间或者论据与中心句之间的联系。实用方法太丰富，以至于想实践都不知道从哪儿开始，这有违‘pragmatic’的宗旨呢！</p>
-<p>写读书笔记的能力急需提高，写了整整一天。。。</p>
-<p>＊. 本书将大脑的两种加工称之为L模式和R模式。L和R很容易联想到左脑和右脑，让人误认为左脑和右脑分工不同，独自工作（尽管作者自己也有在文中澄清，大脑的左右半球是协同合作的）。为避免混淆，这里用模式1和模式2指代者两种模式。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2016/01/31/2016-01-31-pragmatic-thinking-readingnotes/" data-id="cko2di0m7000q4d8z988khqmb" data-title="实用方法: 读《程炼》" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/03/08/2016-03-08-the-dolls-house-reading-notes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          《&lt;玩具屋&gt;九讲》：慢读
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/12/30/2015-12-30-learner-git-note/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git学习笔记1</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/06/2019-10-06-29/">29</a>
-          </li>
-        
-          <li>
-            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug
