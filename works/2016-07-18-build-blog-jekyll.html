@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何用 GitHub 和 jekyll 搭建博客 | 一亩田</title>
+  <meta name="author" content="John Doe">
+  
+  <meta name="description" content="借助 GitHub 平台和 jekyll 静态网站主题模板，10分钟不到就能搭出一个博客。然，搭博客容易，个性定制博客却难上加难。若无 HTML, CSS 相关基础，只能连猜带蒙，小修小补，勉力拼凑。也罢也罢，博客嘛，积累优质博文才是正经事~   
+搭建博客步骤
+fork 心仪的博客仓库  
+clo">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="如何用 GitHub 和 jekyll 搭建博客"/>
+  <meta property="og:site_name" content="一亩田"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">一亩田</a></h1>
+  <h2><a href="/">农人的日志</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/null">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2016-07-18T13:18:00.000Z"><a href="/works/2016-07-18-build-blog-jekyll.html">2016-07-18</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">如何用 GitHub 和 jekyll 搭建博客</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <p>借助 GitHub 平台和 jekyll 静态网站主题模板，10分钟不到就能搭出一个博客。然，搭博客容易，个性定制博客却难上加难。若无 HTML, CSS 相关基础，只能连猜带蒙，小修小补，勉力拼凑。也罢也罢，博客嘛，积累优质博文才是正经事~   </p>
+<h2 id="搭建博客步骤"><a href="#搭建博客步骤" class="headerlink" title="搭建博客步骤"></a>搭建博客步骤</h2><ul>
+<li>fork 心仪的博客仓库  </li>
+<li>clone 到本地  </li>
+<li>本地修改 <code>_config.yml</code> 文件中的个人信息  </li>
+<li>在 <code>CNAME</code> 中添加个性域名<br>若 fork 的仓库中无 <code>CNAME</code> 文件，进入本地仓库目录，在 terminal 中输入如下代码。在新生成的 <code>CNAME</code> 中添加域名。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">touch CNAME</span><br><span class="line">&#96;&#96;&#96;     </span><br><span class="line"></span><br><span class="line">- 在 &#96;_posts&#96; 中添加博文  </span><br><span class="line">	- 博文文件名需依照格式 &#96;date-title.md&#96;，如 &#96;2016-07-19-summer.md&#96;，否则 Jekyll 无法正确识别读取文件，  </span><br><span class="line">	- 博文头部需添加 &#96;YAML 编码&#96;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<p>layout: post<br>title: 中文简要排版参考<br>categories: [blog]<br>tags: [Chinese, Read, ]<br>description:</p>
+<hr>
+<p>正文在这里开始~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- push 本地内容到 GitHub  </span><br><span class="line">- 访问网址 &#96;username.github.io&#96; 或者 在 &#96;CNAME&#96; 文档中添加的个性域名，就可以看到自己的博客啦~  </span><br><span class="line"></span><br><span class="line">## 本地预览 </span><br><span class="line">发布博文的路径稍有繁琐：</span><br><span class="line">  </span><br><span class="line">&gt; 本地修改 -&gt; 同步到 GitHub 端 -&gt; 访问博客网址 -&gt; 查看修改效果</span><br><span class="line"></span><br><span class="line">若持续检查修改博文，需要反复 commit 反复 push ，老辛苦了。有没有什么法子，能在本地预览博客网页效果了呢？有哒！  </span><br><span class="line"></span><br><span class="line">- 安装 Jekyll 到本地 </span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">$ gem install jekyll   </span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">-  进入本地博客仓库    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>$ cd Documents/…/username.github.io   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 使用 jekyll 本地浏览服务   </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>$ jekyll serve     </p>
+<pre><code>
+- 用浏览器访问 server address: &lt;http://127.0.0.1:4000/&gt; 查看网页
+
+在 Mac 系统下安装 jekyll 可能因没有 permission 而失败。可以根据 jekyll 官方文档 [troubleshooting](https://jekyllrb.com/docs/troubleshooting/) ，尝试输入： 
+</code></pre>
+<p>$ sudo gem update –system # update RubyGems<br>$ xcode-select –install # if still have problems, download and install new Command Line Tools<br>$ sudo gem install jekyll # install jekyll</p>
+<p>```  </p>
+<p><code>sudo</code> 似乎是个需要慎用的命令？不懂啦……    </p>
+<p>以及，遇到问题要先查阅 <strong>官方文档</strong> 呀！在 stackoverflow 上绕得一头雾水，糊里糊涂输了一些代码，安装了一些软件，依然没有解决问题……最后，发现人家官方文档早就给出最优解决方案了 T^T</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/">undefined</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://mashuangpsy.com/works/2016-07-18-build-blog-jekyll.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="as_sitesearch" value="mashuangpsy.com">
+  </form>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2021 John Doe
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
