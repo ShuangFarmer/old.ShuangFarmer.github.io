@@ -1,54 +1,283 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《&lt;玩具屋&gt;九讲》：慢读 | 一亩田</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="《玩具屋》是一部短篇小说，原文不到3000字。台湾作家王文兴先生用了足足九堂课讲解这部短篇小说。《&lt;玩具屋&gt;九讲》则是完整的课堂笔记。   为什么一部不到3000字的小说，用九堂课的时间才讲解完毕呢？这与王文兴先生践行的慢读法密不可分。王文兴先生读书，每天不超过2小时，每小时不超过1000字。先生读书追求的是:  一字不漏，字字求解。好的小说恐已到了数学的域囿，像数学一样，字字有用——">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《&lt;玩具屋&gt;九讲》：慢读">
+<meta property="og:url" content="http://shuangfarmer.github.io/2016/03/08/2016-03-08-the-dolls-house-reading-notes/index.html">
+<meta property="og:site_name" content="一亩田">
+<meta property="og:description" content="《玩具屋》是一部短篇小说，原文不到3000字。台湾作家王文兴先生用了足足九堂课讲解这部短篇小说。《&lt;玩具屋&gt;九讲》则是完整的课堂笔记。   为什么一部不到3000字的小说，用九堂课的时间才讲解完毕呢？这与王文兴先生践行的慢读法密不可分。王文兴先生读书，每天不超过2小时，每小时不超过1000字。先生读书追求的是:  一字不漏，字字求解。好的小说恐已到了数学的域囿，像数学一样，字字有用——">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-03-07T16:13:00.000Z">
+<meta property="article:modified_time" content="2016-07-19T15:07:00.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一亩田</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">农人的日志</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      <div class="outer">
+        <section id="main"><article id="post-2016-03-08-the-dolls-house-reading-notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/03/08/2016-03-08-the-dolls-house-reading-notes/" class="article-date">
+  <time class="dt-published" datetime="2016-03-07T16:13:00.000Z" itemprop="datePublished">2016-03-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Book/">Book</a>
+  </div>
 
-    if page.comments
-      include _partial/comments.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《&lt;玩具屋&gt;九讲》：慢读
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>《玩具屋》是一部短篇小说，原文不到3000字。台湾作家王文兴先生用了足足九堂课讲解这部短篇小说。《&lt;玩具屋&gt;九讲》则是完整的课堂笔记。  </p>
+<p>为什么一部不到3000字的小说，用九堂课的时间才讲解完毕呢？这与王文兴先生践行的<code>慢读法</code>密不可分。王文兴先生读书，每天不超过2小时，每小时不超过1000字。先生读书追求的是:</p>
+<blockquote>
+<p>一字不漏，字字求解。<br>好的小说恐已到了数学的域囿，像数学一样，字字有用——连标点都有用。  </p>
+</blockquote>
+<p>要字字求解，便不能一目十行地浏览，而是要用<code>读诗</code>的方式咀嚼。读诗，需要<code>拆</code>，一个字一个字地读，理解字面意思，揣摩言外之意。读诗，还需要<code>建</code>，调用感官和想象力，把纸上文字转化为彩色的画面、立体的空间、动态的情境，置身其中，体会文字用意。</p>
+<p>以《玩具屋》的一小段描写为例：  </p>
+<blockquote>
+<p>Lil, for instance, who was a stout, plain child, with big freckles, came to school in a dress made from a green art-serge table cloth of the Burnells’ with red plush sleeves from the Logans’ curtains.<br>先说丽儿——高大、不标致、满脸大雀斑的女孩——上学所穿的外衣，就是用伯内尔家的绿色斜条纹桌布，以及罗根家红丝绒窗帘做的袖子，并凑而成的。</p>
+</blockquote>
+<p>Lil的母亲是洗衣妇，父亲尚在监狱。在这篇小说中，社会地位低下Lil屡遭他人的排斥和嘲笑。摘出的这一片段是对Lil的人物描写。  </p>
+<ul>
+<li>拆   <ul>
+<li>stout, plain, big freckles<br>作者用了3个词描写Lil的外貌：高大、不标致、满脸大雀斑。高大，说明Lil身材壮实，暗示Lil可能从事较多体力劳动。不标志和满脸大雀斑，都说明Lil容貌平平，缺乏日常护理和妆容打扮，这也暗示了Lil较低的社会地位。  </li>
+</ul>
+<ul>
+<li>dress<br>Lil的着装描写则更为生动。Lil是个穿“百家布”的姑娘，裙子是由Burnell家的桌布和Logan家的窗帘制成的。这里可以看到Lil家境贫寒，买不起衣裳，只能捡别人家淘汰的布料做成衣衫。</li>
+</ul>
+</li>
+<li>建<br>前面是<code>拆</code>，这里需要动用想象力在脑海里<code>画</code>一个Lil的形象。尤其是<code>画</code>出Lil的穿着，能读出更多言外之意。想象一个其貌不样，满脸雀斑，高高壮壮的女孩，穿着用桌布和窗帘制成的裙子站在面前。  </li>
+</ul>
+<ul>
+<li>配色<br>绿色裙面配红色袖子，红配绿，不协调   </li>
+<li>材质<br>桌布厚而不透气，丝绒窗帘厚且笨重老气，姑娘穿着这身裙子，一定不舒服  </li>
+</ul>
+<p>  总之，Lil这一身衣服，不伦不类，粗糙劣质，也难怪遭人嘲笑看不起。更何况，把别人家弃置的布料，做成衣服，穿在身上，难免不会感到低人一等。</p>
+<p>短短一句话，作者已然生动描绘出一个工人阶级家小孩的形象。如果不慢读，怎么可能读出这么多的信息来？需要补充一点的是，为了描述方便，将<code>拆</code>和<code>建</code>分开叙述。真正阅读时，<code>拆</code>和<code>建</code>是同时进行的，推敲字词有所得，脑中构建的形象更生动具体；在脑中构建形象，也会帮助人捕捉到文字的言外之意。</p>
+<p>在<code>拆</code>与<code>建</code>之外，也要能评价文字，哪里写得好，哪里写的不好，有自己的观点。  比如，讲到文中的一段描写，王文兴先生直接评价说：   </p>
+<blockquote>
+<p>整体来看，写作上没什么过人之处，只是平淡的描述。</p>
+</blockquote>
+<p>王文兴老师示范了，要有欣赏的眼光，也要有批评的魄力！</p>
+<p>可以说《&lt;玩具屋&gt;九讲》全书，便是跟随王文兴先生共赴<code>拆</code>、<code>建</code>、和独立评价的阅读之旅，非开卷而不能领略小说与慢读法的奥妙。</p>
+<p>最后，关于阅读与写作，王文兴先生说过一句很深刻的话。  </p>
+<blockquote>
+<p>看一个人是什么样的作者，就要看他是一个什么样的读者。</p>
+</blockquote>
+<p>不阅读经典，不在阅读时推敲语言的运用，自己写作时，又怎么能懂得遣词造句呢？阅读和写作，本就是一体两面的事呵！</p>
+<p>附：<br>他们在岛屿写作系列有制作王文兴先生的纪录片，该片获得48届金马奖最佳剪辑和最佳纪录片提名，度盘能搜到资源：<a target="_blank" rel="noopener" href="https://movie.douban.com/subject/5969394/">他们在岛屿写作：寻找背海的人</a><br>王文兴先生的访谈，关于慢读和慢写：<a target="_blank" rel="noopener" href="http://www.infzm.com/content/95937">快读等于未读 台湾作家王文兴不慌不忙的50年</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://shuangfarmer.github.io/2016/03/08/2016-03-08-the-dolls-house-reading-notes/" data-id="cko4be23u000sm28zhfe7e7tm" data-title="《&lt;玩具屋&gt;九讲》：慢读" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/18/2016-07-18-build-blog-jekyll/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          如何用 GitHub 和 jekyll 搭建博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/31/2016-01-31-pragmatic-thinking-readingnotes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">实用方法: 读《程炼》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/06/2019-10-06-29/">29</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,54 +1,257 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>路 | 一亩田</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="人成长于独立为自己做决定之时。我成长得慢，第一个独立作出的决定，始于三年半以前。或而，我可以厚着脸皮宣称，小女年方三岁半 ^_^   乌镇「你是不是不想读了？你可以不读！」「嗯，我不读了。」   命运急急转弯，那时的我并不知情。在师兄师姐目瞪口呆，甚或窃窃羡慕的眼神里，我单肩跨起书包，推门走出会议室。夜深了，路灯忽明忽暗，这条往返近 4 年的林荫路，我行至中途又折了回来。该往哪里走？   三年后回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="路">
+<meta property="og:url" content="http://shuangfarmer.github.io/2016/08/08/2016-08-08-me/index.html">
+<meta property="og:site_name" content="一亩田">
+<meta property="og:description" content="人成长于独立为自己做决定之时。我成长得慢，第一个独立作出的决定，始于三年半以前。或而，我可以厚着脸皮宣称，小女年方三岁半 ^_^   乌镇「你是不是不想读了？你可以不读！」「嗯，我不读了。」   命运急急转弯，那时的我并不知情。在师兄师姐目瞪口呆，甚或窃窃羡慕的眼神里，我单肩跨起书包，推门走出会议室。夜深了，路灯忽明忽暗，这条往返近 4 年的林荫路，我行至中途又折了回来。该往哪里走？   三年后回">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-08-08T04:06:50.000Z">
+<meta property="article:modified_time" content="2016-08-12T09:13:54.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一亩田</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">农人的日志</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      <div class="outer">
+        <section id="main"><article id="post-2016-08-08-me" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/08/08/2016-08-08-me/" class="article-date">
+  <time class="dt-published" datetime="2016-08-08T04:06:50.000Z" itemprop="datePublished">2016-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Life/">Life</a>
+  </div>
 
-    if page.comments
-      include _partial/comments.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      路
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>人成长于独立为自己做决定之时。我成长得慢，第一个独立作出的决定，始于三年半以前。或而，我可以厚着脸皮宣称，小女年方三岁半 ^_^  </p>
+<h2 id="乌镇"><a href="#乌镇" class="headerlink" title="乌镇"></a>乌镇</h2><p>「你是不是不想读了？你可以不读！」<br>「嗯，我不读了。」  </p>
+<p>命运急急转弯，那时的我并不知情。在师兄师姐目瞪口呆，甚或窃窃羡慕的眼神里，我单肩跨起书包，推门走出会议室。夜深了，路灯忽明忽暗，这条往返近 4 年的林荫路，我行至中途又折了回来。该往哪里走？  </p>
+<p>三年后回想，仍隐隐后怕。没有 Plan B，没有征询师友，没有报备父母，保送研究生说不念就不念。一夜之间，繁重的活儿蒸发了，我漂浮虚空，四周黑漆漆的，而那颗碧水环绕的蓝色星球，在目光尽头的尽头。  </p>
+<p>那年冬天，好似长过一整年，手握大把大把的时间，我重拾书本。胡乱翻书，冥冥中总挑拣阅读些苦难人生。年少不知愁，却把他心当我心，常掩卷哭泣。就在那时，偶遇木心。那时的我，手中无缰，胯下无马，虚弱得紧。研究生导师的话，也像咒语，阴郁不散。我似乎不如人家聪明，动手能力也不好，还自私自我。幸好，木心说了，知高山望高山，朝高处攀爬，让明年的自己做现在自己的老师便好。你也许会大笑，这些话，一碗鸡汤。鸡汤，但受用。一本《文学回忆录》，文学尽数忘记了，而木心关照艺术，关爱学生的心，像晕红晕红的炭火，不足以驱寒，却在冬夜里熨烫着，暖烘烘的。</p>
+<p>出国念书前，赴上海办签证，我取道乌镇。木心纪念馆初初落成，终于得见「最后一课」的珍贵视频。视频里的老头子，长得可俊，双目有神，和学生们说着吴语味儿的俏皮话。初次亲眼见到木心的画，西方技法，东方神髓。最爱那副苍山孤月，宁静而骄傲。从此，求学千里之遥的荷兰，我梦里会梦见乌镇。荷兰多云多雨，我望着阴沉沉的窗外，眼前似乎也会浮现清波摇曳的水湾，屋顶瓦楞间的点点绿色，随风摇摆的蓝印花布……  </p>
+<h2 id="奈村"><a href="#奈村" class="headerlink" title="奈村"></a>奈村</h2><p>奈村其实不是一个村。地处荷兰中部，麻雀虽小五脏俱全，是座平和安逸的小城。来到村里，头一件难事 —— 教小伙伴正确念出我的名字。小伙伴打死发不出平声的「双」，总是「shuang、shuang」（四声）急急唤我。迫不得已安上新名号，我似乎也成了另一个「我」。    </p>
+<p>雨夜，我蹬着自行车乱撞。纵横交错的小街，稍有不慎便拐岔了道。心知不能准时赴约，天越来越黑，雨势不见削弱，朋友家仍没有影踪。扶着车把手，雨哗哗打在脸上，我哇哇大哭。迟到40分钟，匆忙把自行车搁在路边，忐忑不安按着朋友家的门铃。德国姑娘 Tania 踩在阁楼的台阶上，俯身为我开门，「哈哈，shuang，你怎么来得那么晚？快进来快进来」。待我进门，她一把抱住全身湿透的我。当得知我迷路了，她偏着头问，「shuang，你找不到路，为什么不打电话问我？」。是啊，我为什么不向他人求助？    </p>
+<p>我在奈村暂居的小家，有一座花园，两棵大树擎天。死宅如我，虽坐拥花园，两度春秋过去，无不是偶一抬头，见叶子落光了，才惊觉深秋已至。待再一抬头，葱茏的绿，已涂满我的窗户。一日，室友希腊妹妹 christina 悄悄在我门前贴了张便利贴：「Join us in the sun」。我望向窗外，不知何时，Christina 搬了两张白色长椅到花园中央。奈村难得一见的阳光，晒得长椅下的草地翠「铮铮」的。我开了门，踩过草地，躺在长椅上。天空没有一丝云，瓦蓝瓦蓝的，清凉的风相送。时间不再流动，一如这静谧的蓝天。我告诉 Christina，住在这里快两年了，从来不知道花园这么美。Christina 说：「shuang，你为什么不出来走走」。是啊，我什么不走出那扇门？    </p>
+<p>奈村两年，时时有师友的「why？」拂拭身心。虽学业无成，亦不算一无所获了罢。  </p>
+<h2 id="成都？"><a href="#成都？" class="headerlink" title="成都？"></a>成都？</h2><p>「还读么？」<br>「不读了。」   </p>
+<p>回家了。告别奈村，我似乎又一次听见命运转弯摩擦铁轨的声响。心理系学生，似乎被逼向一道窄门，学术科研之外，再无出路。我偏要轻轻说一声「不」。  </p>
+<p>未来如何，留给下一篇小传吧。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://shuangfarmer.github.io/2016/08/08/2016-08-08-me/" data-id="cko4be23w000ym28zgkicfsgf" data-title="路" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/12/2016-08-12-triz_overall/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          没有摩擦的摩擦
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/29/2016-07-29-SelfReflection/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Suffering is optional</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/06/2019-10-06-29/">29</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

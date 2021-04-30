@@ -1,54 +1,286 @@
-extends base
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>月光 | 一亩田</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="很闷很闷的青春碎语">
+<meta property="og:type" content="article">
+<meta property="og:title" content="月光">
+<meta property="og:url" content="http://shuangfarmer.github.io/2019/05/19/2019-05-19-moonlight/index.html">
+<meta property="og:site_name" content="一亩田">
+<meta property="og:description" content="很闷很闷的青春碎语">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-05-19T14:13:00.000Z">
+<meta property="article:modified_time" content="2019-05-19T15:47:34.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-block title
-  title= page.title + ' | ' + config.title
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta= page.date.format(config.date_format)
-      if page.categories.length > 0
-        span= ' | '
-        span.category
-          for category in page.categories.toArray()
-            a(href=url_for(category.path))= category.name
-      if theme.busuanzi == true
-        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
-        span#busuanzi_container_page_pv= ' | '
-          span#busuanzi_value_page_pv
-          span= ' ' + __('Hits')
-      if theme.wordcount == true
-        include _partial/wordcount.pug
-    if theme.disqus.enable == true
-      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
-    if theme.changyan
-      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
-        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
-        span= ' ' + __('Comment')
-      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
-    if theme.valine.enable
-      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
-        span.valine-comment-count(data-xid=url_for(page.path))
-        span= ' ' + __('Comment')
-    if page.toc
-      div(class='clear')
-        div(id='toc' class='toc-article')
-          div(class='toc-title')= __('contents')
-          != toc(page.content, {list_number: theme.toc_number})
-    .post-content
-      != page.content
-    if theme.donate.enable == true && page.donate != false
-      include _widget/donate.pug
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    if theme.post_copyright.enable == true && page.copyright != false
-      include _widget/copyright.pug
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
 
-    if theme.shareto == true
-      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
-      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一亩田</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">农人的日志</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://shuangfarmer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-    include _partial/tag.pug
-    include _partial/post_nav.pug
+      <div class="outer">
+        <section id="main"><article id="post-2019-05-19-moonlight" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2019/05/19/2019-05-19-moonlight/" class="article-date">
+  <time class="dt-published" datetime="2019-05-19T14:13:00.000Z" itemprop="datePublished">2019-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Life/">Life</a>
+  </div>
 
-    if page.comments
-      include _partial/comments.pug
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      月光
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>夜晚的下课铃，声场总比白天来得响亮，飞过空阔的操场，翻越围墙，沿分叉的路口，走得远远的。背了书包的孩子，被四溢的铃声牵引，鱼贯而出，在这个路口或是下个路口，挥手道别，走向自己的那条小径。</p>
+<p>偶尔，小雨会在烧烤摊子那里驻足一会儿。摊主 40 上下，柔顺的长发扎成松松的马尾垂在脑后，一身白褂子。圆圆的小土豆， 三个一串，在烤架上摆一排。纤细的手指握一柄刷子，在上面涂抹清油和干辣椒面儿，白白的烟气从微红的炭火间蹿出，香气跟着跑出来。</p>
+<p>摊主烤土豆的样子，总让小雨感到平静。静默娴熟，仿佛踩着某支音乐的节拍，翩翩舞蹈，油烟从未沾染上衣衫，一袭白。</p>
+<p>—</p>
+<p>习题册的纸张，很薄，还洇墨。一张张，订成大厚本儿，写过的部分微微蓬起，顺着侧棱一掀，便翻到还没写过的部分。「冲刺XXX」、「XXX全解读」、「XXX真题模拟」，习题册的名字总有勇赴战场的直白奋进，但终归长了些，跟不上快速更迭的教学节奏。老师从习题册的外观抽取特征，布置作业的时候，「红皮」、「绿皮」、「大蓝皮」，响彻教室。</p>
+<p>翻开绿皮。分明是印在纸页上的几条线，俯看、举着看、转来转去看，那个传说中的多面体并没有神迹般从纸页间站起来。看得乏了，线条倒像活了过来，时而凸起，时而后凹，在眼前交替闪烁。如何证明线段 BE 垂直于面 ADC？</p>
+<p>换大蓝皮。</p>
+<p>从斜坡上滚落的小球，弹簧使役的小球，滑轮牵引的小球，遭到撞击蹦向别处的小球，电场磁场环绕的小球……得有个垂直于斜面的力吧？重力必须有？还有个弹簧牵引的力，被磁场的力抵消了没？该用左手定则还是右手定则？</p>
+<p>手里捏着蓝皮，倒在床上。雯雯说，思路绕不出来的时候，往床上一躺，就有了灵感。小雨躺了会儿，又坐起来。再躺，得睡着了。</p>
+<p>以前，雯雯每天乘公交回家，小雨就陪雯雯走到公交站，再折返回来，反正家就在学校附近。一路上，也没太多话题。无非是考试有道题目太难不会做，物理课有例题没听懂云云。雯雯讲得多，小雨只应着。雯雯成绩要好很多，小雨心想，这一点雯雯也应该知道吧。</p>
+<p>雯雯现在搬到了比小雨家离学校更近的地方。像燕子归巢似的，好多同学都住到了学校附近，节省下来的几十分钟、个把小时，不晓得是为了争分夺秒多一点睡眠，还是像小雨那样，耗着。</p>
+<p>小雨摸出 mp3，调到电台模式，拧着旋钮换台。若有若无的风声，蹑手蹑脚的草地潜行，恐怖故事女主播压低了声音说请听下回分解；情感节目的醇厚男声，说些似是而非的暖心话，大约是个身材矮小的中年大叔？刚结婚的小青年致电医生咨询着难言之隐，班里有男生是忠实听众，几次撞见他们一脸猥琐笑容地悄悄讨论。再后面，是档音乐节目，话少，音乐多，小雨常听。</p>
+<p>有一首歌，小雨念念不忘。就在这档音乐节目，从上一首歌到这一首歌之间，主持人不发一语。从这一首到下一首之间，主持人也什么都没说。前奏起，只觉得月亮一下子升到了窗边，清亮的光泽，化成银色的绸缎团绕在书桌四周。月光投下一道隐秘的甬道，光滑、柔软，通向远远的被银色包裹着的地方。巨大的月亮像一面明镜，站在镜中，小雨觉得自己从来没有这么明媚照人过。</p>
+<p>曲终。月光转瞬消失，书桌上摊着绿皮、大蓝皮，台灯在老地方垂着头。</p>
+<p>谁能唱出这样一首歌？小雨想象了很多次。他可能皮肤很细很白，个子高高瘦瘦，眼睛像泉水一样清澈。嗯…他还可能是个光头！那么光滑的声线，不会依附这些毛毛刺刺的东西。对，他一定是个光头！</p>
+<p>只要得空，小雨便把电台打开。晚自习跑步的时候，作业绕不出思路的时候，终于喘口气爬上床的时候，渴盼远远的银色月亮，降临窗边。</p>
+<p>这首歌却再也没有出现过。</p>
+<p>—</p>
+<p>「妈，开一下电台，拨到 FM 106.2。」</p>
+<p>妈妈默不作声地照做。</p>
+<p>周六，下了自习，妈妈又提议一家人聚个餐。每次都吃鱼。吃了那么多次，小雨还是记不得这家鱼的味道。也不是很有说话的念头，小雨不说话，爸妈也收住了话头。一路无话地听着电台音乐，又一路听着火锅店的喧闹，在冒着泡的红汤里捞起翻滚的鱼片。</p>
+<p>「这些算撒子嘛」，妈妈总说。</p>
+<p>「嗯」，小雨应了声。</p>
+<p>并不是很想跟妈妈理论这个话题，自知论据不足。大概同龄人里没多少比得上妈妈那代人的经历。可就算是最应该「无忧无虑」的童年，也不是完全明媚的吧。小雨记得因为年纪最小，玩游戏的时候被院子里的哥哥姐姐当拖油瓶推来扔去，巷子里的大灰狗不知怎的总跟在自己后面越是跑越是追，还有因为四肢不协调被幼儿园老师点名在同学面前表演…</p>
+<p>过去的，都会过去，是吗？</p>
+<p>—</p>
+<p>高考体检，像一场姗姗来迟的春游，在校服外套里穿了旁的 T 恤，挣脱出校园，又拖拖拉拉往医院走。小雨拎着体检的单子，人群涌向哪儿便跟到哪儿。量身高体重、查视力听力、抽血，又闷头走到一间检查室。雯雯她们已经先到了，十几个女生站成两排，大家都不说话。检查室的门玻璃，特地拉上了帘子，医生歪头瞅了眼帘子确认没有漏下缝隙后，让大家把衣服脱下来。</p>
+<p>「只留内衣，蹲在地上，双手放在身后。」</p>
+<p>没有人动。</p>
+<p>医生又复述了一遍要求。</p>
+<p>雯雯轻轻看了一眼左右同学，拉下校服外套的拉链。小雨身后陆陆续续传来拉拉链的声音。拥挤的检查室，窸窸窣窣了一阵，静默了。</p>
+<p>蹲下，盯着地面，背上有点凉。小雨偷瞄了一眼雯雯。雯雯的内衣上绣了一只粉粉的 Hello Kelly，胸部也比平时看着更丰满。有点想笑，又忍住了。</p>
+<p>用最快的速度穿上衣服，冲出检查室。</p>
+<p>没有人再提起这件事。就像从小到大眼见的许多事情一样，没有通知、不由解释、不容情绪，只是经历、过去、遗忘。</p>
+<p>小雨没想到，高考也是这样的味道。只是遗忘的周期稍长些罢了。</p>
+<p>—</p>
+<p>出差回家。</p>
+<p>爸爸递来遥控器，说想看什么台自己调。</p>
+<p>小雨想，有多久没看电视了？心不在焉地翻翻翻，在跳台的空隙，崩出一个男声，清亮而温柔，小雨心里蹬了一下。</p>
+<p>按后退键。</p>
+<p>噢，电视里的人，也颇为清瘦，皮肤很白很细，只是…不是他。</p>
+<p>小雨转过头，望向窗边。巨大的银色月亮，你还在吗？你还好吗？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://shuangfarmer.github.io/2019/05/19/2019-05-19-moonlight/" data-id="cko4be252003vm28ze55sbu8o" data-title="月光" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/09/2019-06-09-taste/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          口音
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/28/2019-04-28-mayday/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mayday</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Book/">Book</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Music/">Music</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">February 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/03/">March 2008</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/03/2021-01-03-2020-final/">2020_final</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/14/2020-03-14-moment/">Moment</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/23/2019-12-23-Recently/">Recently</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/06/2019-10-06-29/">29</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/13/2019-09-13-TheLine/">排队</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
