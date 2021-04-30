@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   
-  
   <title>git学习笔记1 | 一亩田</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="研究报告、论文、代码，都是需要长线发展，一点点更新、修改、打磨的项目，无法一夜之间大笔一挥，一蹴而就。为求稳妥，每做一点修改，都会把文件另存为，取名为ver1、ver2、ver3、ver4…, 把它跟旧版本区分开来。这样一来，一篇报告，一个程序，往往有N个不同的版本。时间长了，根本不知道每个版本都有哪些改动。而某个版本出现了bug，想要回看历史版本，也不知该从何看起。版本管理系统就是为了应对这样的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git学习笔记1">
@@ -21,21 +20,16 @@
     <link rel="alternate" href="/atom.xml" title="一亩田" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.png">
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   
 <link rel="stylesheet" href="/css/style.css">
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
@@ -48,10 +42,6 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">一亩田</a>
       </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">农人的日志</a>
-        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -75,12 +65,11 @@
     </div>
   </div>
 </header>
-
       <div class="outer">
-        <section id="main"><article id="post-2015-12-30-learner-git-note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-2015-12-30-learner-git-note" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/30/2015-12-30-learner-git-note/" class="article-date">
-  <time class="dt-published" datetime="2015-12-30T03:16:00.000Z" itemprop="datePublished">2015-12-30</time>
+  <time datetime="2015-12-30T03:16:00.000Z" itemprop="datePublished">2015-12-30</time>
 </a>
     
   <div class="article-category">
@@ -94,14 +83,14 @@
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
+    <h1 class="article-title" itemprop="name">
       git学习笔记1
     </h1>
   
 
       </header>
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
         <p>研究报告、论文、代码，都是需要长线发展，一点点更新、修改、打磨的项目，无法一夜之间大笔一挥，一蹴而就。为求稳妥，每做一点修改，都会把文件另存为，取名为ver1、ver2、ver3、ver4…, 把它跟旧版本区分开来。这样一来，一篇报告，一个程序，往往有N个不同的版本。时间长了，根本不知道每个版本都有哪些改动。而某个版本出现了bug，想要回看历史版本，也不知该从何看起。版本管理系统就是为了应对这样的需求而设计。版本管理，顾名思义，管理的是文件的各个历史版本。有了它，可以很方便地回看、储存和编辑同一个文件的历史版本。甚至，论文、程序写坏了都不要紧，还原到之前的稳妥版本就行。下面提到的git就是这样一个版本管理系统。</p>
 <p>###git系统简介<br>git是一个分布式版本管理系统。<strong>分布式</strong>是相对<strong>集中式</strong>而言的。一个集中式的管理系统，文件的历史版本全部存在中央服务器中。需要从中央服务器下载先需要修改的文件，进行修改。而每做一次修改，又需要将修改的文件上传到中央服务器。集中式管理系统使用起来并不方便也不安全，因为它必须联网才能工作，而要是中央服务器坏了，所有的历史记录都没了。而分布式系统的优势在于，它没有中央服务器，每个用户的电脑里都保存着完整的文件历史版本的记录，完全可以离线操作。用户之间可以相互分享文件的历史记录。如果某个人的电脑坏了，历史记录没了，从其他人的电脑上把历史记录拷贝过来就行。 </p>
@@ -226,8 +215,7 @@ HEAD is now at 78122e2... Add readme file
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://shuangfarmer.github.io/2015/12/30/2015-12-30-learner-git-note/" data-id="cko4be23t000nm28z2ssy68dk" data-title="git学习笔记1" class="article-share-link">Share</a>
-      
+      <a data-url="http://shuangfarmer.github.io/2015/12/30/2015-12-30-learner-git-note/" data-id="cko4be23t000nm28z2ssy68dk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +243,6 @@ HEAD is now at 78122e2... Add readme file
 
   
 </article>
-
 
 </section>
         
@@ -324,13 +311,11 @@ HEAD is now at 78122e2... Add readme file
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      
       &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
-
     </div>
     <nav id="mobile-nav">
   
@@ -341,21 +326,19 @@ HEAD is now at 78122e2... Add readme file
 </nav>
     
 
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
 <script src="/js/script.js"></script>
-
-
-
 
 
   </div>
